@@ -5,6 +5,7 @@ import android.database.Cursor;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.sina.weibo.sdk.openapi.models.PicUrl;
 import com.sina.weibo.sdk.openapi.models.Source;
 import com.sina.weibo.sdk.openapi.models.Status;
 import com.sina.weibo.sdk.openapi.models.StatusList;
@@ -97,8 +98,8 @@ public class DoDBStatus {
             String pic_urls = returnCursor.getString(returnCursor
                     .getColumnIndexOrThrow(DBStatus.FIELD_PIC_URLS));
             // json转为带泛型的list
-            ArrayList<String> picUrls = new Gson().fromJson(pic_urls,
-                    new TypeToken<List<String>>() {
+            ArrayList<PicUrl> picUrls = new Gson().fromJson(pic_urls,
+                    new TypeToken<List<PicUrl>>() {
                     }.getType());
 
 

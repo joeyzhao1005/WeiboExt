@@ -66,4 +66,10 @@ public class RequestType {
     public  static final String COMMENT_32_LIKE_DESTORY = "COMMENT_32_LIKE_DESTORY";
 
 
+    /**
+     * 发布微博
+     */
+    public  static final String STATUS_CREATE = "STATUS_CREATE";
+
+
 }

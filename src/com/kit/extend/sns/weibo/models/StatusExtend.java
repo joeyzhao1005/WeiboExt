@@ -19,7 +19,7 @@ public class StatusExtend extends Status {
         String strJson = GsonUtils.toJson(statusList);
 
 
-        ArrayList<StatusExtend> statusExtends = (ArrayList<StatusExtend>) GsonUtils.getList(strJson,
+        ArrayList<StatusExtend> statusExtends =  GsonUtils.getArrayList(strJson,
                 new TypeToken<ArrayList<StatusExtend>>() {
                 }.getType());
 //        for (Status status : statusList) {

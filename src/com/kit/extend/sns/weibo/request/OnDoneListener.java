@@ -4,12 +4,12 @@ import android.content.Context;
 
 import com.kit.extend.sns.weibo.enums.RequestType;
 import com.kit.extend.weibo.R;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.kit.utils.ToastUtils;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.openapi.models.ErrorInfo;
 
-public class OnCompleteListener {
+public class OnDoneListener {
     /**
      * 是否显示异常提示
      */
@@ -27,14 +27,14 @@ public class OnCompleteListener {
     public ErrorInfo errorInfo;
 
 
-    public OnCompleteListener() {
+    public OnDoneListener() {
     }
 
-    public OnCompleteListener(Context context) {
+    public OnDoneListener(Context context) {
         this.context = context;
     }
 
-    public OnCompleteListener(Context context, String type, boolean isShowCompleteTips, boolean isShowExceptionTips) {
+    public OnDoneListener(Context context, String type, boolean isShowCompleteTips, boolean isShowExceptionTips) {
         this.context = context;
         this.type = type;
         this.isShowCompleteTips = isShowCompleteTips;
@@ -43,9 +43,9 @@ public class OnCompleteListener {
 
     public void onComplete(String response) {
 
-        ZogUtils.printLog(OnCompleteListener.class, "response:" + response);
+        ZogUtils.i("response:" + response);
 
-        ZogUtils.printLog(OnCompleteListener.class, "onComplete type:" + type
+        ZogUtils.i("onComplete type:" + type
                 + " isShowCompleteTips:" + isShowCompleteTips);
 
         switch (type) {
@@ -90,6 +90,11 @@ public class OnCompleteListener {
                 if (isShowCompleteTips)
                     ToastUtils.mkLongTimeToast(context, context.getString(R.string.status_show_ok));
                 break;
+
+            case RequestType.STATUS_CREATE:
+                if (isShowCompleteTips)
+                    ToastUtils.mkLongTimeToast(context, context.getString(R.string.status_create_ok));
+                break;
             case RequestType.FRIENDS_TIME_LINE:
                 if (isShowCompleteTips)
                     ToastUtils.mkLongTimeToast(context, context.getString(R.string.friends_time_line_ok));
@@ -102,7 +107,7 @@ public class OnCompleteListener {
         errorInfo = ErrorInfo.parse(e.getMessage());
 
 
-        ZogUtils.printLog(OnCompleteListener.class,
+        ZogUtils.i(
                 "WeiboException type:" + type +
                         " isShowExceptionTips:" + isShowExceptionTips);
 
@@ -117,8 +122,12 @@ public class OnCompleteListener {
                     ToastUtils.mkLongTimeToast(context, context.getString(R.string.comment_destroy_fail));
                 break;
             case RequestType.COMMENT_REPLY:
-                if (isShowExceptionTips)
-                    ToastUtils.mkLongTimeToast(context, context.getString(R.string.comment_reply_fail));
+                if (isShowExceptionTips) {
+                    if (errorInfo.error_code.equals("20206"))
+                        ToastUtils.mkLongTimeToast(context, context.getString(R.string.weibo_error_20206));
+                    else
+                        ToastUtils.mkLongTimeToast(context, context.getString(R.string.comment_reply_fail));
+                }
                 break;
             case RequestType.REPOST_CREATE:
                 if (isShowExceptionTips)
@@ -139,6 +148,11 @@ public class OnCompleteListener {
             case RequestType.STATUS_SHOW:
                 if (isShowExceptionTips)
                     ToastUtils.mkLongTimeToast(context, context.getString(R.string.status_show_fail));
+                break;
+
+            case RequestType.STATUS_CREATE:
+                if (isShowExceptionTips)
+                    ToastUtils.mkLongTimeToast(context, context.getString(R.string.status_create_fail));
                 break;
             case RequestType.FRIENDS_TIME_LINE:
                 if (isShowExceptionTips)

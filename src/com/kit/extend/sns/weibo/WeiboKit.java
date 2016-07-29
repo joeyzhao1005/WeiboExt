@@ -5,11 +5,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.kit.extend.sns.weibo.WeiboConfig;
-import com.kit.extend.sns.weibo.WeiboConstant;
 import com.kit.utils.ListUtils;
 import com.kit.utils.StringUtils;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
 import com.sina.weibo.sdk.openapi.models.ErrorInfo;
@@ -36,20 +34,20 @@ public class WeiboKit {
             public void onComplete(String response) {
                 Log.i(WeiboConstant.LOG_TAG_SINA_WEIBO, response.toString());
                 if (!TextUtils.isEmpty(response)) {
-                    // LogUtils.printLog(getClass(), response.toString());
+                    // LogUtils.i(getClass(), response.toString());
                     if (response.startsWith("{\"statuses\"")) {
                         // 调用 StatusList#parse 解析字符串成微博列表对象
                         StatusList statuses = StatusList.parse(response);
                         if (statuses != null && statuses.total_number > 0) {
 
-                            ZogUtils.printLog(WeiboKit.class,
+                            ZogUtils.i(
                                     "获取微博信息流成功, 条数: " + statuses.statusList.size());
 
                         }
                     } else if (response.startsWith("{\"created_at\"")) {
                         // 调用 Status#parse 解析字符串成微博对象
                         Status status = Status.parse(response);
-                        ZogUtils.printLog(WeiboKit.class,
+                        ZogUtils.i(
                                 "发送一送微博成功, id = " + status.id);
                         Toast.makeText(mContext,
                                 "发送微博成功",
@@ -97,7 +95,7 @@ public class WeiboKit {
 
             findText = str.substring(start + 1, end);
             strs.add(findText);
-//            LogUtils.printLog(WeiboKit.class, "start:" + start + " end:" + end + "findText:" + findText);
+//            LogUtils.i(WeiboKit.class, "start:" + start + " end:" + end + "findText:" + findText);
 
         }
 
@@ -122,7 +120,7 @@ public class WeiboKit {
      * @return
      */
     private static String replaceScreenShow(ArrayList<User> users, String remark) {
-        ZogUtils.printLog(WeiboKit.class, "remark:" + remark);
+        ZogUtils.i("remark:" + remark);
 
         for (User u : users) {
             if (u.remark.equals(remark)) {

@@ -5,7 +5,7 @@ import android.database.Cursor;
 
 import com.kit.extend.sns.weibo.core.Comparator4FriendsById;
 import com.kit.utils.ListUtils;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.sina.weibo.sdk.openapi.models.Status;
 import com.sina.weibo.sdk.openapi.models.StatusList;
 import com.sina.weibo.sdk.openapi.models.User;
@@ -138,7 +138,7 @@ public class DoDBFriends {
         dbFriends.closeConnection();
 
 
-        ZogUtils.printLog(DoDBFriends.class, "userList.size:" + userList.size());
+        ZogUtils.i( "userList.size:" + userList.size());
         return userList;
     }
 
@@ -151,7 +151,7 @@ public class DoDBFriends {
         isDone = dbFriends.insert(list);
         dbFriends.closeConnection();
 
-        ZogUtils.printLog(DoDBFriends.class, "initDataToLocal isDone:" + isDone);
+        ZogUtils.i( "initDataToLocal isDone:" + isDone);
 
         if (isDone) {
             return 1;
@@ -171,7 +171,7 @@ public class DoDBFriends {
     public static int initDataToLocalFromStatus(Context context, StatusList statusList) {
 
         ArrayList<User> dbList = getUsersDataFromLocal(context);
-        ZogUtils.printLog(DoDBFriends.class, "dbList.size:" + dbList.size());
+        ZogUtils.i( "dbList.size:" + dbList.size());
 
 
         DBFriends dbFriends = new DBFriends(context.getApplicationContext());
@@ -215,7 +215,7 @@ public class DoDBFriends {
 
         dbFriends.closeConnection();
 
-        ZogUtils.printLog(DoDBFriends.class, "initDataToLocalFromStatus isDone:" + isDone + " isDone2:" + isDone2);
+        ZogUtils.i( "initDataToLocalFromStatus isDone:" + isDone + " isDone2:" + isDone2);
 
         if (isDone && isDone2) {
             return 1;
@@ -244,7 +244,7 @@ public class DoDBFriends {
 
         for (User user : userList.getUsers()) {
 
-            ZogUtils.printLog(DoDBFriends.class, "user.id:" + user.id);
+            ZogUtils.i( "user.id:" + user.id);
             if (ListUtils.isContain(dbList, user, new Comparator4FriendsById())) {//已有，则更新
                 updateList.add(user);
             } else {//没有新的，那就插入
@@ -259,14 +259,14 @@ public class DoDBFriends {
 
         boolean isDone, isDone2;
         if (insertList != null) {
-            ZogUtils.printLog(DoDBFriends.class, "initDataToLocalRemoveDuplicate insertList:" + insertList.size());
+            ZogUtils.i( "initDataToLocalRemoveDuplicate insertList:" + insertList.size());
 
             isDone = dbFriends.insert(insertList);
         } else {
             isDone = true;
         }
         if (updateList != null) {
-            ZogUtils.printLog(DoDBFriends.class, "initDataToLocalRemoveDuplicate " + "updateList:" + updateList.size());
+            ZogUtils.i( "initDataToLocalRemoveDuplicate " + "updateList:" + updateList.size());
 
             isDone2 = dbFriends.update(updateList);
         } else {
@@ -275,7 +275,7 @@ public class DoDBFriends {
 
         dbFriends.closeConnection();
 
-        ZogUtils.printLog(DoDBFriends.class, "initDataToLocalRemoveDuplicate isDone:" + isDone + " isDone2:" + isDone2);
+        ZogUtils.i( "initDataToLocalRemoveDuplicate isDone:" + isDone + " isDone2:" + isDone2);
 
         if (isDone && isDone2) {
             return 1;

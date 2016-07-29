@@ -2,10 +2,9 @@ package com.kit.extend.sns.weibo.request;
 
 import android.content.Context;
 
-import com.kit.extend.sns.weibo.request.OnCompleteListener;
 import com.kit.extend.weibo.R;
 import com.kit.utils.StringUtils;
-import com.kit.utils.ZogUtils;
+import com.kit.utils.log.ZogUtils;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
 import com.sina.weibo.sdk.openapi.models.ErrorInfo;
@@ -20,22 +19,22 @@ public class WeiboRequestListener implements RequestListener {
      */
 
     public Context context;
-    public OnCompleteListener onCompleteListener;
+    public OnDoneListener onDoneListener;
     public ErrorInfo errorInfo;
 
     //    public boolean isShowTips;
 //    public String type;
-    public WeiboRequestListener() {
-    }
+//    public WeiboRequestListener() {
+//    }
 
     public WeiboRequestListener(Context context) {
         this.context = context;
     }
 
     public WeiboRequestListener(Context context,
-                                OnCompleteListener onCompleteListener) {
+                                OnDoneListener onDoneListener) {
         this.context = context;
-        this.onCompleteListener = onCompleteListener;
+        this.onDoneListener = onDoneListener;
 //        this.type = onCompleteListener.type;
 //        this.isShowTips = onCompleteListener.isShowTips;
 
@@ -44,22 +43,29 @@ public class WeiboRequestListener implements RequestListener {
 
     @Override
     public void onComplete(String response) {
-//        LogUtils.printLog(WeiboRequestListener.class, "response:" + response);
-        if (onCompleteListener != null)
-            onCompleteListener.onComplete(response);
+//        LogUtils.i(WeiboRequestListener.class, "response:" + response);
+        if (onDoneListener != null)
+            onDoneListener.onComplete(response);
 
     }
 
     @Override
     public void onWeiboException(WeiboException e) {
-        ZogUtils.printLog(WeiboRequestListener.class, e.getMessage());
+        ZogUtils.i( e.getMessage());
         errorInfo = ErrorInfo.parse(e.getMessage());
 
         if (errorInfo != null && !StringUtils.isEmptyOrNullOrNullStr(errorInfo.error)) {
-            ZogUtils.printLog(WeiboRequestListener.class, "WeiboException:" + errorInfo.toString());
+
+//            switch (errorInfo.error_code){
+//                case "20206":
+//                    ToastUtils.mkLongTimeToast(context, context.getString(R.string.weibo_error_20206));
+//
+//                    break;
+//            }
+            ZogUtils.i( "WeiboException:" + errorInfo.toString());
 //            Toast.makeText(context, info.toString(), Toast.LENGTH_LONG).show();
         } else {
-            ZogUtils.printLog(WeiboRequestListener.class, "context:" + context);
+            ZogUtils.i( "context:" + context);
 
             if (context != null) {
                 errorInfo = new ErrorInfo();
@@ -67,8 +73,8 @@ public class WeiboRequestListener implements RequestListener {
             }
         }
 
-        if (onCompleteListener != null)
-            onCompleteListener.onException(e);
+        if (onDoneListener != null)
+            onDoneListener.onException(e);
 
     }
 
