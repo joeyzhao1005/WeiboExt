@@ -13,6 +13,7 @@ import com.sina.weibo.sdk.openapi.models.PicUrl;
 import com.sina.weibo.sdk.openapi.models.Source;
 import com.sina.weibo.sdk.openapi.models.Status;
 import com.sina.weibo.sdk.openapi.models.StatusList;
+import com.sina.weibo.sdk.openapi.models.StatusWapper;
 import com.sina.weibo.sdk.openapi.models.User;
 import com.sina.weibo.sdk.openapi.models.Visible;
 
@@ -108,7 +109,7 @@ public class DBRetweetedStatus extends DB {
         return cursor;
     }
 
-    public Status selectByIdReturnStatus(long id) {
+    public StatusWapper selectByIdReturnStatus(long id) {
         String where = FIELD_STATUSID + " = '" + id + "'";
         // SQLiteDatabase mDb = this.getReadableDatabase();
         //System.out.println("where: " + where);
@@ -198,7 +199,7 @@ public class DBRetweetedStatus extends DB {
         visible.type = (visibleType);
         visible.list_id = (visibleListId);
 
-        Status status = new Status();
+        StatusWapper status = new StatusWapper();
         status.user = (user);
         status.created_at = (createdAt);
         status.id = (id+"");
@@ -215,7 +216,7 @@ public class DBRetweetedStatus extends DB {
         status.bmiddle_pic = (bmiddlePic);
         status.original_pic = (originalPic);
         if (retweetedStatusId != 0) {
-            Status s2 = new Status();
+            StatusWapper s2 = new StatusWapper();
             s2.id = (retweetedStatusId+"");
             status.retweeted_status = (s2);
         }

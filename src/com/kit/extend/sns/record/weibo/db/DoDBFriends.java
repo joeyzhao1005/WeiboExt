@@ -182,9 +182,7 @@ public class DoDBFriends {
         ArrayList<User> insertList = new ArrayList<User>();
         ArrayList<User> updateList = new ArrayList<User>();
         for (Status status : statusList.statusList) {
-            if (status.ad != null) {//过滤掉微博推广用户
-                continue;
-            }
+
             statusUserList.add(status.user);
         }
 

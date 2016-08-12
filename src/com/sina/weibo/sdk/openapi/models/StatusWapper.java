@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * @author SINA
  * @since 2013-11-22
  */
-public class Status{
+public class StatusWapper extends Status{
 
     /**
      * 微博创建时间
@@ -97,7 +97,7 @@ public class Status{
     /**
      * 被转发的原微博信息字段，当该微博为转发微博时返回
      */
-    public Status retweeted_status;
+    public StatusWapper retweeted_status;
     /**
      * 转发数
      */
@@ -142,12 +142,12 @@ public class Status{
         return null;
     }
 
-    public static Status parse(JSONObject jsonObject) {
+    public static StatusWapper parse(JSONObject jsonObject) {
         if (null == jsonObject) {
             return null;
         }
 
-        Status status = new Status();
+        StatusWapper status = new StatusWapper();
         status.created_at = jsonObject.optString("created_at");
         status.id = jsonObject.optString("id");
         status.mid = jsonObject.optString("mid");
@@ -167,7 +167,7 @@ public class Status{
         status.original_pic = jsonObject.optString("original_pic");
         status.geo = Geo.parse(jsonObject.optJSONObject("geo"));
         status.user = User.parse(jsonObject.optJSONObject("user"));
-        status.retweeted_status = Status.parse(jsonObject.optJSONObject("retweeted_status"));
+        status.retweeted_status = StatusWapper.parse(jsonObject.optJSONObject("retweeted_status"));
         status.reposts_count = jsonObject.optInt("reposts_count");
         status.comments_count = jsonObject.optInt("comments_count");
         status.attitudes_count = jsonObject.optInt("attitudes_count");

@@ -9,6 +9,7 @@ import com.sina.weibo.sdk.openapi.models.PicUrl;
 import com.sina.weibo.sdk.openapi.models.Source;
 import com.sina.weibo.sdk.openapi.models.Status;
 import com.sina.weibo.sdk.openapi.models.StatusList;
+import com.sina.weibo.sdk.openapi.models.StatusWapper;
 import com.sina.weibo.sdk.openapi.models.User;
 import com.sina.weibo.sdk.openapi.models.Visible;
 
@@ -107,7 +108,7 @@ public class DoDBStatus {
             visible.type = (visibleType);
             visible.list_id = (visibleListId);
 
-            Status status = new Status();
+            StatusWapper status = new StatusWapper();
             status.user = (user);
             status.created_at = (createdAt);
             status.id = (id + "");
@@ -137,7 +138,7 @@ public class DoDBStatus {
             // Status s2 = new Status();
             // s2.setId(retweetedStatusId);
             // status.setRetweetedStatus(s2);
-            Status s2 = null;
+            StatusWapper s2 = null;
             if (retweetedStatusId != 0) {
 
                 DBRetweetedStatus dbRetweetedStatus = new DBRetweetedStatus(
