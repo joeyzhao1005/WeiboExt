@@ -58,7 +58,7 @@ public class WeiboRequestListener implements RequestListener {
 
 //            switch (errorInfo.error_code){
 //                case "20206":
-//                    ToastUtils.mkLongTimeToast(context, context.getString(R.string.weibo_error_20206));
+//                    ToastUtils.mkLongTimeToast( context.getString(R.string.weibo_error_20206));
 //
 //                    break;
 //            }

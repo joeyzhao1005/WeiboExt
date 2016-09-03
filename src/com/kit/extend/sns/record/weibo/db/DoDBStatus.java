@@ -326,7 +326,7 @@ public class DoDBStatus {
         dbStatus.closeConnection();
 
         // msg = "更新联系人成功";
-        // ToastUtils.mkShortTimeToast(context, msg);
+        // ToastUtils.mkShortTimeToast( msg);
         if (isDone) {
             return 1;
         } else {
