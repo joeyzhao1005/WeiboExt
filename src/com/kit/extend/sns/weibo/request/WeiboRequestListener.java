@@ -54,7 +54,7 @@ public class WeiboRequestListener implements RequestListener {
         ZogUtils.i( e.getMessage());
         errorInfo = ErrorInfo.parse(e.getMessage());
 
-        if (errorInfo != null && !StringUtils.isEmptyOrNullOrNullStr(errorInfo.error)) {
+        if (errorInfo != null && !StringUtils.isEmptyOrNullStr(errorInfo.error)) {
 
 //            switch (errorInfo.error_code){
 //                case "20206":
