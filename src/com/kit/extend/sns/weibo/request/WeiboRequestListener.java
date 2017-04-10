@@ -2,7 +2,6 @@ package com.kit.extend.sns.weibo.request;
 
 import android.content.Context;
 
-import com.kit.extend.weibo.R;
 import com.kit.utils.StringUtils;
 import com.kit.utils.log.ZogUtils;
 import com.sina.weibo.sdk.exception.WeiboException;
@@ -69,7 +68,8 @@ public class WeiboRequestListener implements RequestListener {
 
             if (context != null) {
                 errorInfo = new ErrorInfo();
-                errorInfo.error = context.getString(R.string.fmt_iap_err);
+                errorInfo.error_code = "10010";
+//                errorInfo.error = context.getString(R.string.fmt_iap_err);
             }
         }
 
