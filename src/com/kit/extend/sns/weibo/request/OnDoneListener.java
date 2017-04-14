@@ -1,8 +1,8 @@
 package com.kit.extend.sns.weibo.request;
 
 import android.content.Context;
+import android.util.Log;
 
-import com.kit.utils.log.ZogUtils;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.openapi.models.ErrorInfo;
 
@@ -40,9 +40,9 @@ public class OnDoneListener {
 
     public void onComplete(String response) {
 
-//        ZogUtils.i("response:" + response);
+//        Log.i("Zhao_APP","response:" + response);
 //
-//        ZogUtils.i("onComplete type:" + type
+//        Log.i("Zhao_APP","onComplete type:" + type
 //                + " isShowCompleteTips:" + isShowCompleteTips);
 //
 //        switch (type) {
@@ -103,7 +103,7 @@ public class OnDoneListener {
         errorInfo = ErrorInfo.parse(e.getMessage());
 
 
-        ZogUtils.i(
+        Log.i("Zhao_APP",
                 "WeiboException type:" + type +
                         " isShowExceptionTips:" + isShowExceptionTips);
 

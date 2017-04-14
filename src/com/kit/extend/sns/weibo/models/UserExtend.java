@@ -1,11 +1,12 @@
 package com.kit.extend.sns.weibo.models;
 
 import com.google.gson.reflect.TypeToken;
-import com.kit.utils.GsonUtils;
+import com.kit.extend.sns.utils.GsonUtils;
 import com.sina.weibo.sdk.openapi.models.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 
 /**
  * Created by Zhao on 15/4/11.

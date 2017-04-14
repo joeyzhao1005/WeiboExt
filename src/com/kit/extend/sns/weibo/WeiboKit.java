@@ -5,9 +5,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.kit.utils.ListUtils;
-import com.kit.utils.StringUtils;
-import com.kit.utils.log.ZogUtils;
+import com.kit.extend.sns.utils.ListUtils;
+import com.kit.extend.sns.utils.StringUtils;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
 import com.sina.weibo.sdk.openapi.models.ErrorInfo;
@@ -32,7 +31,7 @@ public class WeiboKit {
         RequestListener mListener = new RequestListener() {
             @Override
             public void onComplete(String response) {
-                Log.i(WeiboConstant.LOG_TAG_SINA_WEIBO, response.toString());
+//                Log.i("Zhao_APP",WeiboConstant.LOG_TAG_SINA_WEIBO, response.toString());
                 if (!TextUtils.isEmpty(response)) {
                     // LogUtils.i(getClass(), response.toString());
                     if (response.startsWith("{\"statuses\"")) {
@@ -40,14 +39,14 @@ public class WeiboKit {
                         StatusList statuses = StatusList.parse(response);
                         if (statuses != null && statuses.total_number > 0) {
 
-                            ZogUtils.i(
+                            Log.i("Zhao_APP",
                                     "获取微博信息流成功, 条数: " + statuses.statusList.size());
 
                         }
                     } else if (response.startsWith("{\"created_at\"")) {
                         // 调用 Status#parse 解析字符串成微博对象
                         Status status = Status.parse(response);
-                        ZogUtils.i(
+                        Log.i("Zhao_APP",
                                 "发送一送微博成功, id = " + status.id);
                         Toast.makeText(mContext,
                                 "发送微博成功",
@@ -120,7 +119,7 @@ public class WeiboKit {
      * @return
      */
     private static String replaceScreenShow(ArrayList<User> users, String remark) {
-        ZogUtils.i("remark:" + remark);
+        Log.i("Zhao_APP","remark:" + remark);
 
         for (User u : users) {
             if (u.remark.equals(remark)) {

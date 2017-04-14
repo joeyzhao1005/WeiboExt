@@ -1,9 +1,9 @@
 package com.kit.extend.sns.weibo.request;
 
 import android.content.Context;
+import android.util.Log;
 
-import com.kit.utils.StringUtils;
-import com.kit.utils.log.ZogUtils;
+import com.kit.extend.sns.utils.StringUtils;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
 import com.sina.weibo.sdk.openapi.models.ErrorInfo;
@@ -50,7 +50,7 @@ public class WeiboRequestListener implements RequestListener {
 
     @Override
     public void onWeiboException(WeiboException e) {
-        ZogUtils.i( e.getMessage());
+        Log.i("Zhao_APP", e.getMessage());
         errorInfo = ErrorInfo.parse(e.getMessage());
 
         if (errorInfo != null && !StringUtils.isEmptyOrNullStr(errorInfo.error)) {
@@ -61,10 +61,10 @@ public class WeiboRequestListener implements RequestListener {
 //
 //                    break;
 //            }
-            ZogUtils.i( "WeiboException:" + errorInfo.toString());
+            Log.i("Zhao_APP", "WeiboException:" + errorInfo.toString());
 //            Toast.makeText(context, info.toString(), Toast.LENGTH_LONG).show();
         } else {
-            ZogUtils.i( "context:" + context);
+            Log.i("Zhao_APP", "context:" + context);
 
             if (context != null) {
                 errorInfo = new ErrorInfo();

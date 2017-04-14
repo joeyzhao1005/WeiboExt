@@ -1,8 +1,7 @@
 package com.kit.extend.sns.record.weibo.text;
 
 import com.google.gson.Gson;
-import com.kit.app.enums.CharsetName;
-import com.kit.utils.TextUtils;
+import com.kit.extend.sns.utils.TextUtils;
 import com.sina.weibo.sdk.openapi.models.StatusList;
 
 /**
@@ -45,7 +44,7 @@ public class DoStatus {
      */
     public StatusList getStatusList() {
 
-        String str = TextUtils.readTxtFromLocal(FILE_NAME, CharsetName.UTF_8);
+        String str = TextUtils.readTxtFromLocal(FILE_NAME, "UTF_8");
 
         Gson gson = new Gson();
         StatusList commentList = gson.fromJson(str, StatusList.class);

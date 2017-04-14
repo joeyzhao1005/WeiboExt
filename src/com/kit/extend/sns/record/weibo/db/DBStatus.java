@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.kit.utils.ListUtils;
+import com.kit.extend.sns.utils.ListUtils;
 import com.sina.weibo.sdk.openapi.models.PicUrl;
 import com.sina.weibo.sdk.openapi.models.Source;
 import com.sina.weibo.sdk.openapi.models.Status;

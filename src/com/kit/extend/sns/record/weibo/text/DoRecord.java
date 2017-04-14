@@ -1,8 +1,7 @@
 package com.kit.extend.sns.record.weibo.text;
 
 import com.google.gson.Gson;
-import com.kit.app.enums.CharsetName;
-import com.kit.utils.TextUtils;
+import com.kit.extend.sns.utils.TextUtils;
 
 /**
  * Created by Zhao on 14-10-13.
@@ -43,7 +42,7 @@ public class DoRecord {
      */
     public Object getData( Class clazz) {
 
-        String str = TextUtils.readTxtFromLocal(FILE_NAME, CharsetName.UTF_8);
+        String str = TextUtils.readTxtFromLocal(FILE_NAME, "UTF_8");
 
         Gson gson = new Gson();
         Object commentList = gson.fromJson(str, clazz);

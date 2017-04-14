@@ -1,7 +1,7 @@
 package com.kit.extend.sns.weibo.models;
 
 import com.google.gson.reflect.TypeToken;
-import com.kit.utils.GsonUtils;
+import com.kit.extend.sns.utils.GsonUtils;
 import com.sina.weibo.sdk.openapi.models.Comment;
 import com.sina.weibo.sdk.openapi.models.Status;
 
