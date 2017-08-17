@@ -6,17 +6,18 @@ repositories {
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
 //    compile project(':ZUtilsExt')
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.android.support:support-v4:26.0.1'
+
+    compile 'com.android.support:appcompat-v7:26.0.1'
+    compile 'com.google.code.gson:gson:2.8.0'
 
     compile 'com.sina.weibo.sdk:core:1.0.0:openDefaultRelease@aar'
 }
 
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
 
     defaultConfig {
         minSdkVersion 14
