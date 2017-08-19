@@ -4,14 +4,14 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
+    implementation fileTree(dir: 'libs', include: '*.jar')
 //    implementation project(':ZUtilsExt')
-    compile 'com.android.support:support-v4:26.0.1'
+    implementation 'com.android.support:support-v4:26.0.1'
 
-    compile 'com.android.support:appcompat-v7:26.0.1'
-    compile 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.android.support:appcompat-v7:26.0.1'
+    implementation 'com.google.code.gson:gson:2.8.0'
 
-    compile 'com.sina.weibo.sdk:core:1.0.0:openDefaultRelease@aar'
+    implementation 'com.sina.weibo.sdk:core:1.0.0:openDefaultRelease@aar'
 }
 
 
@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 26
     }
 
     compileOptions {
