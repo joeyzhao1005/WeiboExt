@@ -5,7 +5,7 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
-//    compile project(':ZUtilsExt')
+//    implementation project(':ZUtilsExt')
     compile 'com.android.support:support-v4:26.0.1'
 
     compile 'com.android.support:appcompat-v7:26.0.1'
