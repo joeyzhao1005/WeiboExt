@@ -6,10 +6,10 @@ repositories {
 dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
 //    implementation project(':ZUtilsExt')
-    implementation 'com.android.support:support-v4:27.0.0'
+    implementation 'com.android.support:support-v4:27.1.1'
 
-    implementation 'com.android.support:appcompat-v7:27.0.0'
-    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.google.code.gson:gson:2.8.2'
 
     implementation('com.sina.weibo.sdk:core:1.0.0:openDefaultRelease@aar') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
