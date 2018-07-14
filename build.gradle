@@ -6,9 +6,9 @@ repositories {
 dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
 //    implementation project(':ZUtilsExt')
-    implementation 'com.android.support:support-v4:27.1.1'
+    implementation "com.android.support:support-v4:${android_sdk_version}"
 
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation "com.android.support:appcompat-v7:${android_sdk_version}"
     implementation 'com.google.code.gson:gson:2.8.2'
 
     implementation('com.sina.weibo.sdk:core:1.0.0:openDefaultRelease@aar') {
@@ -24,12 +24,12 @@ dependencies {
 
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.1"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 27
+        targetSdkVersion 28
     }
 
     compileOptions {
