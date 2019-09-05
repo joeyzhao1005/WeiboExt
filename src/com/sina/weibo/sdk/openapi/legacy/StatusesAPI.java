@@ -18,7 +18,7 @@ package com.sina.weibo.sdk.openapi.legacy;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
